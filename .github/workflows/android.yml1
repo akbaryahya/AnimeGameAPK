@@ -1,0 +1,47 @@
+name: Launcher Android CI
+
+on:
+  push:
+  pull_request:
+  repository_dispatch:
+    types: [run_build]
+
+permissions:
+  contents: write
+  discussions: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Compile RA
+      run: |
+        chmod +x gradlew
+        ./gradlew assembleRelease
+        find . -iname "*.apk" -exec l -l "{}" \;
+        ls -l app
+    - name: Get short SHA
+      id: slug
+      run: echo "::set-output name=sha8::$(echo ${GITHUB_SHA} | cut -c1-8)"
+    
+    - uses: actions/upload-artifact@v4
+      with:
+        name: Launcher-android-${{ steps.slug.outputs.sha8 }}
+        path: |
+          app/build/outputs/apk/release/app-release-unsigned.apk
+          app/build/*
+          
+    - name: Upload to Release
+      uses: softprops/action-gh-release@v1
+      with:
+        files: |
+          app/build/outputs/apk/release/app-release-unsigned.apk
+          app/build/*
+        name: Launcher-android-${{ steps.slug.outputs.sha8 }}
+        tag_name: ${{ github.run_id }}
+        body: Retroarch for android
+      env:
+        GITHUB_TOKEN: ${{ secrets.SECRET_GITHUB_TOKEN }}
