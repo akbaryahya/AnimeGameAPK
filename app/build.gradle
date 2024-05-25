@@ -58,5 +58,5 @@ dependencies {
     implementation fileTree(dir: "libs", include: ["lib*.so"])
     compileOnly 'de.robv.android.xposed:api:82'
     compileOnly 'de.robv.android.xposed:api:82:sources'
-    implementation 'com.github.kyuubiran:EzXHelper:1.0.0'
+    implementation 'com.github.kyuubiran:EzXHelper:2.2.0'
 }
