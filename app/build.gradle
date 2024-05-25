@@ -1,5 +1,6 @@
 plugins {
     id 'com.android.application'
+    kotlin("android")
     id 'kotlin-android'
 }
 
@@ -51,6 +52,9 @@ android {
             excludes += "/*.bin"
         }
     }
+    buildFeatures {
+    viewBinding = true
+}
 }
 
 dependencies {
