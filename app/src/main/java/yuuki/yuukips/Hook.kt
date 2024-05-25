@@ -113,22 +113,21 @@ class Hook {
             i.packageName == "${package_apk_cn}"
         ) { 
 
-         // Startup
-         EzXHelperInit.initHandleLoadPackage(i)
+        // Startup
+        EzXHelperInit.initHandleLoadPackage(i)
 
-         // Hook Activity
-         findMethod(injek_activity) { name == "onCreate" }.hookBefore { param ->
+        // Hook Activity
+        findMethod(injek_activity) { name == "onCreate" }.hookBefore { param ->
             activity = param.thisObject as Activity
 
             // Enter
             Enter()
 
             // Injek here bed
-         }
+        }
 
-         // Injek here good
-         Injek()
-    }
+        // Injek here good
+        Injek()
     }
 
     private fun Injek() {
