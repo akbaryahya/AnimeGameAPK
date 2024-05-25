@@ -10,14 +10,12 @@ auto=true
 install_to_phone=true
 
 if ($auto); then
-    file_apk="apk/official/45/ys/yuanshen_4.5.0/dist/45.apk"
-    file_final="apk/final/YuukiPS_YS_45.apk"
-    file_out="apk/out/45-387-lspatched.apk"
+    file_apk="apk/official/46/ys/yuanshen_4.6.0/dist/46.apk"
+    file_final="apk/final/YuukiPS_YS_46.apk"
+    file_out="apk/out/46-387-lspatched.apk"
     file_our="app/build/outputs/apk/release/app-release-aligned-debugSigned.apk"
-    file_cn="apk/mod/36/xfk233.genshinproxy.apk"
 
     echo "Tried Patching Mod APK with Proxy APK"
-    # java -jar tool/lspatch.jar $file_apk -m $file_our -m $file_cn -o apk/out -f
     java -jar tool/lspatch.jar $file_apk -m $file_our -o apk/out -f || echo "Failed to Patch Mod APK with Proxy APK"
 
     echo "Rename file..."
