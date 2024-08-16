@@ -55,7 +55,10 @@ android {
 
 dependencies {
     implementation fileTree(dir: "libs", include: ["lib*.so"])
-    compileOnly 'de.robv.android.xposed:api:82'
-    compileOnly 'de.robv.android.xposed:api:82:sources'
+    
+    // Use the local JAR files
+    compileOnly files('libs/api-82.jar')
+    compileOnly files('libs/api-82-sources.jar')
+
     implementation 'com.github.kyuubiran:EzXHelper:0.9.2'
 }

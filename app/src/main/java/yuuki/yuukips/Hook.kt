@@ -23,8 +23,8 @@ import javax.net.ssl.*
 class Hook {
 
     // App
-    private val package_apk_os = "com.yuuki.gi46os"
-    private val package_apk_cn = "com.yuuki.gi46cn"
+    private val package_apk_os = "com.yuuki.gi47os"
+    private val package_apk_cn = "com.yuuki.gi47cn"
     private val package_apk_real_os = "com.miHoYo.GenshinImpact"
     private val package_apk_real_cn = "com.miHoYo.Yuanshen"
     private val injek_activity = "com.miHoYo.GetMobileInfo.MainActivity"
